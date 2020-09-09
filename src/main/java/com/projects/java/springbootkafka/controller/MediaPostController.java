@@ -14,7 +14,7 @@ import com.projects.java.springbootkafka.model.MediaPost;
 import com.projects.java.springbootkafka.services.MediaPostProducerService;
 
 /**
- * Controller to publishes post to producer
+ * Controller to publish a post to producer service
  * @author haree
  *
  */
