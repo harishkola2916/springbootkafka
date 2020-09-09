@@ -4,7 +4,7 @@ Example project using springboot and kafka
 
 This rest service performs following operations
 1. A producer service sends a post object using kafka topic 
-2. A consumer service receives the post object from the reciever
+2. A consumer service receives the post object from the topic
 
 
 Running instructions:
