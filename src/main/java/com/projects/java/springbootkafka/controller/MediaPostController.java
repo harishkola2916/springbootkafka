@@ -19,7 +19,7 @@ import com.projects.java.springbootkafka.services.MediaPostProducerService;
  *
  */
 @RestController
-@RequestMapping(value = "/media")
+@RequestMapping(value = "/api")
 public class MediaPostController {
 	
 	@Autowired
@@ -30,19 +30,18 @@ public class MediaPostController {
 	 * Posts message from request to producer
 	 * @param message
 	 */
-	/*
-	@PostMapping(value = "/publish")
+	@PostMapping(value = "/media/welcome")
 	void sendPostMessageToPage(@RequestParam("message") String message)
 	{
-		mediaPostProducerService.sendPost(message);
+		mediaPostProducerService.sendMessage(message);
 	}	
-	*/
+	
 	
 	/**
 	 * Posts {@link MediaPost} received from request as request body to producer
 	 * @param post {@link MediaPost}
 	 */
-	@PostMapping(value = "/publish")
+	@PostMapping(value = "/media/publish")
 	void sendPostMessageToPage(@RequestBody MediaPost post)
 	{
 		mediaPostProducerService.sendPost(post);

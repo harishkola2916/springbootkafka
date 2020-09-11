@@ -19,14 +19,25 @@ public class MediaPostConsumerService {
             LoggerFactory.getLogger(MediaPostConsumerService.class);
 
 	/**
-	 * Reads messages{@link MediaPost} received from producer through topic
+	 * Reads {@link MediaPost} received from producer through topic
 	 * @param post
 	 */
 	@KafkaListener(topics = "post", 
             groupId = GROUPID)
-	public void readMessages(MediaPost post)
+	public void readPosts(MediaPost post)
 	{
 		logger.info(String.format("Message recieved -> %s", post.toString()));
+	}
+	
+	/**
+	 * Reads messages{@link MediaPost} received from producer through topic
+	 * @param message
+	 */
+	@KafkaListener(topics = "message", 
+            groupId = GROUPID)
+	public void readMessages(String message)
+	{
+		logger.info(String.format("Message recieved -> %s", message));
 	}
 	
 }
