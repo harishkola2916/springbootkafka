@@ -3,7 +3,11 @@
  */
 package com.projects.java.springbootkafka.controller;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +22,7 @@ import com.projects.java.springbootkafka.services.MediaPostProducerService;
  * @author haree
  *
  */
+@Validated
 @RestController
 @RequestMapping(value = "/api")
 public class MediaPostController {
@@ -31,18 +36,17 @@ public class MediaPostController {
 	 * @param message
 	 */
 	@PostMapping(value = "/media/welcome")
-	void sendPostMessageToPage(@RequestParam("message") String message)
+	void sendPostMessageToPage(@RequestParam("message") @NotEmpty @Valid String message)
 	{
 		mediaPostProducerService.sendMessage(message);
 	}	
-	
-	
+		
 	/**
 	 * Posts {@link MediaPost} received from request as request body to producer
 	 * @param post {@link MediaPost}
 	 */
 	@PostMapping(value = "/media/publish")
-	void sendPostMessageToPage(@RequestBody MediaPost post)
+	void sendPostMessageToPage(@RequestBody @NotEmpty @Valid MediaPost post)
 	{
 		mediaPostProducerService.sendPost(post);
 	}
